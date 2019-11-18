@@ -1,9 +1,11 @@
 <article>
     <div>
-        <label>{{income.name}}</label>
+        <label>Name:</label>
+        <input [(ngModel)]="income.name" placeholder="name" />
     </div>
     <div>
-        <label>{{income.amount}}</label>
+        <label>Amount:</label>
+        <input [(ngModel)]="income.amount" placeholder="amount" /><!-- {{income.amount | currency:'EUR'}} -->
     </div>
     <div style="text-align: right;">
         <button (click)="delete()" class="delete">&times; Delete</button>
