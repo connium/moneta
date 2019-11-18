@@ -1,0 +1,15 @@
+:host>article:first-of-type {
+    border-top: 1px solid #cccccc;
+}
+
+article {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-top: none;
+    padding: 1rem 1rem;
+    display: grid;
+    grid-column-gap: 50px;
+    grid-template-areas: "name amount action";
+    grid-template-columns: 1fr 1fr 100px;
+    grid-template-rows: 1fr;
+}

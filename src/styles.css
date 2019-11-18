@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    border: none;
+    color: #333333;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f7f9f3;
+    margin: 0 auto;
+}
+
+header {
+    overflow: hidden;
+    background-color: #333333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+h1 {
+    color: #cccccc;
+    font-size: 1.8rem;
+    margin: 0.5rem 0 0 0;
+    display: inline-block;
+}
+
+h1 span {
+    color: #cccccc;
+    font-size: 1.8rem;
+    font-weight: 200;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+h2 {
+    color: #a0c265;
+    font-size: 1.5rem;
+    margin: 3rem 0 1.5rem 0;
+    text-transform: uppercase;
+}
+
+div.container {
+    margin: 0 auto;
+    max-width: 60rem;
+}
+
+input, textarea {
+    border: none;
+    border-bottom: 1px solid #acacac;
+    display: block;
+    margin: 0;
+    outline: none;
+    width: 100%;
+}
+
+input:focus, textarea:focus {
+    border-bottom: 1px solid #a0c265;
+}

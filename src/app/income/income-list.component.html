@@ -1,0 +1,19 @@
+<h2>Incomes <button (click)="showPopup = true" class="add">+ Add new</button></h2>
+<app-income *ngFor="let income of incomes$ | async" [income]="income"></app-income>
+<div class="popup-background" *ngIf="showPopup">
+    <div class="popup">
+        <div style="text-align: right;"><button (click)="showPopup = false" class="close">&times;</button></div>
+        <form>
+            <fieldset>
+                <legend>New Income</legend>
+                <label for="new-income-payer">Payer</label>
+                <input type="text" id="new-income-payer" #newIncomePayer>
+                <label for="new-income-amount">Amount</label>
+                <input type="text" id="new-income-amount" pattern="\d+(\.\d{2})?" #newIncomeAmount>
+                <button type="submit"
+                    (click)="add({name: newIncomePayer.value, amount: newIncomeAmount.value}); showPopup = false;"
+                    class="save">Save</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
