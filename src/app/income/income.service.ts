@@ -26,6 +26,21 @@ export class IncomeService {
     this.incomes.splice(index, 1);
   }
 
+  public download(): void {
+    console.log(`download ${this.incomes.length} incomes`);
+    const filename = `Moneta-${new Date().toISOString().substring(0, 10).replace(/-/g, '')}.json`;
+
+    const pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.incomes, null, 2)));
+    pom.setAttribute('download', filename);
+    pom.style.display = 'none';
+    document.body.appendChild(pom);
+
+    pom.click();
+
+    document.body.removeChild(pom);
+  }
+
   public getIncomes(): Observable<Income[]> {
     return of(this.incomes)
       .pipe(

@@ -1,0 +1,14 @@
+a.download {
+    border: none;
+    color: #cccccc;
+    font-size: 1.2rem;
+    outline: none;
+    text-decoration: none;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0;
+}
+
+a.download:hover {
+    color: #efefef;
+}

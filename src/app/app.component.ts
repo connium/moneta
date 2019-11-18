@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IncomeService } from './income/income.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Moneta';
+
+  constructor(private incomeService: IncomeService) {
+  }
+
+  public save(): void {
+    this.incomeService.download();
+  }
 }
