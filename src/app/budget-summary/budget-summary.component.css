@@ -1,0 +1,23 @@
+section {
+    display: flex;
+}
+
+section div {
+    flex: 0 0 auto;
+    width: calc(100% / 3);
+}
+
+.incomes * {
+    display: block;
+    color: #a0c265;
+    text-align: right;
+}
+
+.incomes output {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.incomes span {
+    text-transform: uppercase;
+}

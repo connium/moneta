@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { Income } from './income.model';
 import { IncomeService } from './income.service';
 
@@ -8,11 +7,10 @@ import { IncomeService } from './income.service';
   templateUrl: './income-list.component.html',
   styleUrls: ['./income-list.component.css']
 })
-export class IncomeListComponent implements OnInit {
-  public incomes$: Observable<Income[]>;
+export class IncomeListComponent {
   private _showPopup: boolean;
 
-  constructor(private incomeService: IncomeService) {
+  constructor(public incomeService: IncomeService) {
     this.showPopup = false;
   }
 
@@ -26,9 +24,5 @@ export class IncomeListComponent implements OnInit {
 
   public set showPopup(value: boolean) {
     this._showPopup = value;
-  }
-
-  public ngOnInit() {
-    this.incomes$ = this.incomeService.getIncomes();
   }
 }
