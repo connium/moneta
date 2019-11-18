@@ -13,3 +13,14 @@ article {
     grid-template-columns: 1fr 1fr 100px;
     grid-template-rows: 1fr;
 }
+
+.delete {
+    background-color: transparent;
+    border: none;
+    color: #acacac;
+    cursor: pointer;
+}
+
+.delete:hover {
+    color: #333333;
+}
