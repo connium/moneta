@@ -11,18 +11,18 @@ import { IncomeService } from '../income/income.service';
 })
 export class BudgetSummaryComponent implements OnInit, OnDestroy {
   public totalIncome = 0;
-  private unsubscribeAll$: Subject<unknown> = new Subject<unknown>();
+  private destroyed$: Subject<boolean> = new Subject<boolean>();
 
   constructor(private incomeService: IncomeService) { }
 
   public ngOnInit(): void {
     this.incomeService.incomes
-      .pipe(takeUntil(this.unsubscribeAll$))
-      .subscribe(this.sumIncomes);
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((incomes) => this.sumIncomes(incomes));
   }
 
   public ngOnDestroy(): void {
-    this.unsubscribeAll$.next();
+    this.destroyed$.next(true);
   }
 
   private sumIncomes(incomes: Income[]): void {

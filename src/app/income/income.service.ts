@@ -7,8 +7,8 @@ import { INCOMES } from './mock-incomes';
   providedIn: 'root'
 })
 export class IncomeService {
-  private _incomes = new BehaviorSubject(INCOMES);
-  incomes = this._incomes.asObservable();
+  private incomesSubject = new BehaviorSubject(INCOMES);
+  public incomes = this.incomesSubject.asObservable();
 
   public constructor() {
   }
@@ -18,24 +18,24 @@ export class IncomeService {
     const defaultIncome: Income = { id: Date.now(), name: 'New Income', amount: 0 };
     const newIncome = Object.assign(defaultIncome, income);
     newIncome.amount = Number.parseFloat(newIncome.amount as any);
+    const currentIncomes = [...this.incomesSubject.getValue(), newIncome];
 
-    this._incomes.getValue().push(newIncome);
-    this._incomes.next(this._incomes.getValue());
+    this.emitIncomes(currentIncomes);
   }
 
   public deleteIncome(id: number): void {
     console.log(`delete income ${id}`);
-    const index = this._incomes.getValue().findIndex((income) => income.id === id);
-    this._incomes.getValue().splice(index, 1);
-    this._incomes.next(this._incomes.getValue());
+    const currentIncomes = this.incomesSubject.getValue().filter((income) => income.id !== id);
+
+    this.emitIncomes(currentIncomes);
   }
 
   public download(): void {
-    console.log(`download ${this._incomes.getValue().length} incomes`);
+    console.log(`download ${this.incomesSubject.getValue().length} incomes`);
     const filename = `Moneta-${new Date().toISOString().substring(0, 10).replace(/-/g, '')}.json`;
 
     const pom = document.createElement('a');
-    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this._incomes.getValue(), null, 2)));
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.incomesSubject.getValue(), null, 2)));
     pom.setAttribute('download', filename);
     pom.style.display = 'none';
     document.body.appendChild(pom);
@@ -43,6 +43,10 @@ export class IncomeService {
     pom.click();
 
     document.body.removeChild(pom);
+  }
+
+  private emitIncomes(incomes: Income[]): void {
+    this.incomesSubject.next(incomes);
   }
 
   /**
