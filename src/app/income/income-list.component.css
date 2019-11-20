@@ -68,3 +68,12 @@
 .close:hover {
     color: #333333;
 }
+
+.no-incomes-hint {
+    text-align: center;
+}
+
+.no-incomes-hint a {
+    color: CornflowerBlue;
+    cursor: pointer;
+}

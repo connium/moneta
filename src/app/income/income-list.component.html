@@ -1,5 +1,7 @@
 <h2>Incomes <button (click)="showPopup = true" class="add">+ Add new</button></h2>
-<app-income *ngFor="let income of incomeService.incomes | async" [income]="income"></app-income>
+<ng-container *ngIf="(incomeService.incomes | async).length >0 else noIncomes">
+    <app-income *ngFor="let income of incomeService.incomes | async" [income]="income"></app-income>
+</ng-container>
 <div class="popup-background" *ngIf="showPopup">
     <div class="popup">
         <div style="text-align: right;"><button (click)="showPopup = false" class="close">&times;</button></div>
@@ -17,3 +19,8 @@
         </form>
     </div>
 </div>
+
+<ng-template #noIncomes>
+    <div class="no-incomes-hint">You have not registered any income yet.<br />
+        <a (click)="showPopup = true">Let us start adding some.</a></div>
+</ng-template>
