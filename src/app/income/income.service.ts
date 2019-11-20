@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Income } from './income.model';
-import { INCOMES } from './mock-incomes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IncomeService {
-  private incomesSubject = new BehaviorSubject(INCOMES);
+  private incomesSubject = new BehaviorSubject([]);
   public incomes = this.incomesSubject.asObservable();
 
   public constructor() {
@@ -43,6 +42,16 @@ export class IncomeService {
     pom.click();
 
     document.body.removeChild(pom);
+  }
+
+  public import(data: string): void {
+    console.log('importing incomes');
+    const parsedData = JSON.parse(data);
+    // TODO validate data
+    const currentIncomes = Object.assign([], parsedData);
+    console.log('imported incomes', currentIncomes);
+
+    this.emitIncomes(currentIncomes);
   }
 
   private emitIncomes(incomes: Income[]): void {

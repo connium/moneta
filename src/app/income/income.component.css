@@ -1,11 +1,7 @@
-:host>article:first-of-type {
-    border-top: 1px solid #cccccc;
-}
-
 article {
     background-color: white;
     border: 1px solid #cccccc;
-    border-top: none;
+    border-bottom: none;
     padding: 1rem 1rem;
     display: grid;
     grid-column-gap: 50px;

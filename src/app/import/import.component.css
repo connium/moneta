@@ -1,0 +1,13 @@
+#dropzone {
+    border: 1px dashed #acacac;
+    color: #acacac;
+    height: 5rem;
+    line-height: 5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#dropzone:hover {
+    border-color: #333333;
+    color: #333333;
+}

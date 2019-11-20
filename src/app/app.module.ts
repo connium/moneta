@@ -7,15 +7,17 @@ import { AppComponent } from './app.component';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
 import { IncomeListComponent } from './income/income-list.component';
 import { IncomeComponent } from './income/income.component';
+import { ImportComponent } from './import/import.component';
 
 registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [
     AppComponent,
+    BudgetSummaryComponent,
+    ImportComponent,
     IncomeComponent,
-    IncomeListComponent,
-    BudgetSummaryComponent
+    IncomeListComponent
   ],
   imports: [
     BrowserModule,
