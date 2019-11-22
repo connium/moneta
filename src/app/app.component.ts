@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IncomeService } from './income/income.service';
 
 @Component({
@@ -7,9 +8,10 @@ import { IncomeService } from './income/income.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Moneta';
+  public title = 'Moneta';
 
-  constructor(private incomeService: IncomeService) {
+  constructor(public router: Router,
+              private incomeService: IncomeService) {
   }
 
   public save(): void {

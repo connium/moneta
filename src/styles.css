@@ -26,16 +26,14 @@ header {
 h1 {
     color: #cccccc;
     font-size: 1.8rem;
-    margin: 0.5rem 0 0 0;
+    margin: 0.5rem 0;
     display: inline-block;
 }
 
-h1 span {
+.subtitle {
     color: #cccccc;
     font-size: 1.8rem;
     font-weight: 200;
-    margin: 0.5rem 0;
-    display: inline-block;
 }
 
 h2 {
