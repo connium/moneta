@@ -10,6 +10,7 @@ import { BudgetComponent } from './budget/budget.component';
 import { ImportComponent } from './import/import.component';
 import { IncomeListComponent } from './income/income-list.component';
 import { IncomeComponent } from './income/income.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 registerLocaleData(localeDe);
@@ -22,7 +23,8 @@ registerLocaleData(localeDe);
     IncomeComponent,
     IncomeListComponent,
     BudgetComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
