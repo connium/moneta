@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { IncomeService } from '../income/income.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { IncomeService } from '../income/income.service';
   styleUrls: ['./import.component.css']
 })
 export class ImportComponent {
+  @Output() import = new EventEmitter<void>();
 
   constructor(private incomeService: IncomeService) { }
 
@@ -31,7 +32,10 @@ export class ImportComponent {
 
     const reader = new FileReader();
     reader.onload = ((theFile) => {
-      return function (e) { this.incomeService.import(e.target.result); }.bind(this);
+      return function (e) {
+        this.incomeService.import(e.target.result);
+        this.import.emit();
+      }.bind(this);
     })(file);
 
     reader.readAsText(file, 'utf8');
