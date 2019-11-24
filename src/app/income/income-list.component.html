@@ -1,5 +1,5 @@
 <h2>Incomes <button (click)="showPopup = true" class="add">+ Add new</button></h2>
-<ng-container *ngIf="(incomeService.incomes | async).length >0 else noIncomes">
+<ng-container *ngIf="(incomeService.incomes | async).length > 0 else noIncomes">
     <app-income *ngFor="let income of incomeService.incomes | async" [income]="income"></app-income>
 </ng-container>
 <div class="popup-background" *ngIf="showPopup">

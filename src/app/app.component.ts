@@ -10,8 +10,12 @@ import { IncomeService } from './income/income.service';
 export class AppComponent {
   public title = 'Moneta';
 
-  constructor(public router: Router,
+  constructor(private router: Router,
               private incomeService: IncomeService) {
+  }
+
+  public isBudgetUrl(): boolean {
+    return /^\/budget/.test(this.router.url);
   }
 
   public save(): void {
