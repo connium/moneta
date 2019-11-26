@@ -8,10 +8,10 @@ import { IncomeService } from './income/income.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'Moneta';
+  public readonly title = 'Moneta';
 
-  constructor(private router: Router,
-              private incomeService: IncomeService) {
+  constructor(private readonly router: Router,
+              private readonly incomeService: IncomeService) {
   }
 
   public isBudgetUrl(): boolean {

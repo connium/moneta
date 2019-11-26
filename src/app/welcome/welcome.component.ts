@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
-  public constructor(private router: Router) {
+  public constructor(private readonly router: Router) {
   }
 
   public onImport() {

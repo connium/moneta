@@ -7,9 +7,10 @@ import { IncomeService } from '../income/income.service';
   styleUrls: ['./import.component.css']
 })
 export class ImportComponent {
-  @Output() import = new EventEmitter<void>();
+  @Output()
+  public readonly import = new EventEmitter<void>();
 
-  constructor(private incomeService: IncomeService) { }
+  constructor(private readonly incomeService: IncomeService) { }
 
   public dragOver(event: Event) {
     event.stopPropagation();

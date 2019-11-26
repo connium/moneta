@@ -11,9 +11,9 @@ import { IncomeService } from '../income/income.service';
 })
 export class BudgetSummaryComponent implements OnInit, OnDestroy {
   public totalIncome = 0;
-  private destroyed$: Subject<boolean> = new Subject<boolean>();
+  private readonly destroyed$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private incomeService: IncomeService) { }
+  public constructor(private readonly incomeService: IncomeService) { }
 
   public ngOnInit(): void {
     this.incomeService.incomes

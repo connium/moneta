@@ -1,31 +1,48 @@
-import { TestBed, async } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import createMockInstance from 'jest-create-mock-instance';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  let routerMock: jest.Mocked<Router>;
+
   beforeEach(async(() => {
+    routerMock = createMockInstance(Router);
+
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
+      providers: [{ provide: Router, useValue: routerMock }],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
-  it(`should have as title 'moneta'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('moneta');
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('moneta app is running!');
+    expect(compiled.querySelector('header div h1').textContent).toContain('Moneta');
+  });
+
+  it('should return true if the router url starts with "budget"', () => {
+    Object.defineProperty(routerMock, 'url', { value: 'budget' });
+
+    expect(component.isBudgetUrl()).toBe(true);
+  });
+
+  it('should return false if the router url not starts with "budget"', () => {
+    Object.defineProperty(routerMock, 'url', { value: 'prebudget' });
+
+    expect(component.isBudgetUrl()).toBe(false);
   });
 });

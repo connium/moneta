@@ -6,11 +6,8 @@ import { Income } from './income.model';
   providedIn: 'root'
 })
 export class IncomeService {
-  private incomesSubject = new BehaviorSubject([]);
-  public incomes = this.incomesSubject.asObservable();
-
-  public constructor() {
-  }
+  private readonly incomesSubject = new BehaviorSubject([]);
+  public readonly incomes = this.incomesSubject.asObservable();
 
   public addIncome(income: Partial<Income>): void {
     console.log('add income', income);
@@ -34,6 +31,7 @@ export class IncomeService {
     const filename = `Moneta-${new Date().toISOString().substring(0, 10).replace(/-/g, '')}.json`;
 
     const pom = document.createElement('a');
+    // tslint:disable-next-line: max-line-length
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.incomesSubject.getValue(), null, 2)));
     pom.setAttribute('download', filename);
     pom.style.display = 'none';
