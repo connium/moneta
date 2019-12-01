@@ -1,0 +1,7 @@
+<div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" [(ngModel)]="income.name">
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" id="amount" step="0.01" [(ngModel)]="income.amount">
+    <button (click)="update()">Save changes</button><button (click)="goBack()">Go back</button>
+</div>

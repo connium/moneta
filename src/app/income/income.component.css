@@ -10,11 +10,23 @@ article {
     grid-template-rows: 1fr;
 }
 
+.name {
+    font-size: 1.2rem;
+}
+
+.amount {
+    color: #acacac;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
 .delete {
     background-color: transparent;
     border: none;
     color: #acacac;
     cursor: pointer;
+    display: block;
+    width: 100%;
 }
 
 .delete:hover {

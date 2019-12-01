@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ImportComponent } from './import/import.component';
+import { IncomeDetailComponent } from './income-detail/income-detail.component';
 import { IncomeListComponent } from './income/income-list.component';
 import { IncomeComponent } from './income/income.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -18,12 +19,13 @@ registerLocaleData(localeDe);
 @NgModule({
   declarations: [
     AppComponent,
-    BudgetSummaryComponent,
-    ImportComponent,
-    IncomeComponent,
-    IncomeListComponent,
-    BudgetComponent,
     WelcomeComponent,
+    ImportComponent,
+    BudgetComponent,
+    BudgetSummaryComponent,
+    IncomeListComponent,
+    IncomeComponent,
+    IncomeDetailComponent,
     PageNotFoundComponent
   ],
   imports: [

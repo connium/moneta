@@ -26,6 +26,18 @@ export class IncomeService {
     this.emitIncomes(currentIncomes);
   }
 
+  public get(id: number): Observable<Income> {
+    console.log(`fetch income ${id}`);
+    return of(this.incomesSubject.getValue().find((income) => income.id === id));
+  }
+
+  public update(income: Income): void {
+    console.log(`update income ${income.id}`);
+    const currentIncomes = this.incomesSubject.getValue().map((currentIncome) => currentIncome.id === income.id ? income : currentIncome);
+
+    this.emitIncomes(currentIncomes);
+  }
+
   public download(): void {
     console.log(`download ${this.incomesSubject.getValue().length} incomes`);
     const filename = `Moneta-${new Date().toISOString().substring(0, 10).replace(/-/g, '')}.json`;

@@ -1,13 +1,12 @@
 <article>
     <div>
-        <label>Name:</label>
-        <input [(ngModel)]="income.name" placeholder="name" />
+        <span class="name" title="Name">{{income.name}}</span>
     </div>
     <div>
-        <label>Amount:</label>
-        <input [(ngModel)]="income.amount" placeholder="amount" /><!-- {{income.amount | currency:'EUR'}} -->
+        <span class="amount" title="Amount">{{income.amount | currency:'EUR'}}</span>
     </div>
     <div style="text-align: right;">
+        <button routerLink="/budget/income/{{income.id}}" class="delete">Edit</button>
         <button (click)="delete()" class="delete">&times; Delete</button>
     </div>
 </article>
