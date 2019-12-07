@@ -3,5 +3,12 @@
     <input type="text" name="name" id="name" [(ngModel)]="income.name">
     <label for="amount">Amount</label>
     <input type="number" name="amount" id="amount" step="0.01" [(ngModel)]="income.amount">
-    <button (click)="update()">Save changes</button><button (click)="goBack()">Go back</button>
+    <label for="schedule">Schedule</label>
+    <select name="schedule" id="schedule" [(ngModel)]="income.schedule.repeatFrequency">
+        <option *ngFor="let duration of durations()" [value]="duration[1]">{{duration[0]}}</option>
+    </select>
+    <div class="button-bar">
+        <button class="primary" (click)="update()">Save changes</button>
+        <button (click)="goBack()">Go back</button>
+    </div>
 </div>

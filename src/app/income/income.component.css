@@ -10,14 +10,23 @@ article {
     grid-template-rows: 1fr;
 }
 
+div:nth-child(2), div:nth-child(3) {
+    text-align: right;
+}
+
 .name {
     font-size: 1.2rem;
 }
 
 .amount {
     color: #acacac;
+    display: block;
     font-size: 2.5rem;
     font-weight: 700;
+}
+
+.schedule {
+    color: #acacac;
 }
 
 .delete {

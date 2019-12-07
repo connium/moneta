@@ -4,8 +4,9 @@
     </div>
     <div>
         <span class="amount" title="Amount">{{income.amount | currency:'EUR'}}</span>
+        <span class="schedule" title="Schedule">{{getScheduleText()}}</span>
     </div>
-    <div style="text-align: right;">
+    <div>
         <button routerLink="/budget/income/{{income.id}}" class="delete">Edit</button>
         <button (click)="delete()" class="delete">&times; Delete</button>
     </div>

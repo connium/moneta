@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Income } from './income.model';
+import { Duration } from '../model/duration.constant';
+import { Schedule } from '../model/schedule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,8 @@ export class IncomeService {
 
   public addIncome(income: Partial<Income>): void {
     console.log('add income', income);
-    const defaultIncome: Income = { id: Date.now(), name: 'New Income', amount: 0 };
+    const defaultSchedule: Schedule = { repeatFrequency: Duration.Annual };
+    const defaultIncome: Income = { id: Date.now(), name: 'New Income', amount: 0, schedule: defaultSchedule };
     const newIncome = Object.assign(defaultIncome, income);
     newIncome.amount = Number.parseFloat(newIncome.amount as any);
     const currentIncomes = [...this.incomesSubject.getValue(), newIncome];

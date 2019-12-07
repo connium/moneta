@@ -1,5 +1,8 @@
-export class Income {
-  public id: number;
-  public name: string;
-  public amount: number;
+import { Schedule } from '../model/schedule.model';
+
+export interface Income {
+  id: number;
+  name: string;
+  amount: number;
+  schedule: Schedule;
 }

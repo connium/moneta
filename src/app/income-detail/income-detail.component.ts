@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Income } from '../income/income.model';
 import { IncomeService } from '../income/income.service';
+import { Duration } from '../model/duration.constant';
 
 @Component({
   selector: 'app-income-detail',
@@ -15,6 +16,10 @@ export class IncomeDetailComponent implements OnInit {
   public constructor(private readonly route: ActivatedRoute,
                      private readonly incomeService: IncomeService,
                      private readonly location: Location) {
+  }
+
+  public durations(): string[][] {
+    return Object.keys(Duration).map((durationName) => [durationName, Duration[durationName]]);
   }
 
   public getIncome(): void {
